@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Bot - Muzan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('bg-gray-900');
+            body.classList.toggle('bg-white');
+            body.classList.toggle('text-white');
+            body.classList.toggle('text-gray-900');
+        }
+        
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('expand-circle');
+        }
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            modal.classList.add('expand-circle');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('shrink-circle');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('shrink-circle');
+            }, 500);
+        }
+    </script>
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.pinimg.com/originals/b4/f5/36/b4f53638f926ebb093652ca71cc48a6e.gif') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .expand-circle {
+            animation: expandCircle 0.5s ease-in-out;
+        }
+
+        .shrink-circle {
+            animation: shrinkCircle 0.5s ease-in-out;
+        }
+
+        @keyframes expandCircle {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes shrinkCircle {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white relative">
+    <button onclick="toggleTheme()" 
+            class="absolute top-4 right-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600">
+        🌗 Cambiar Tema
+    </button>
+    
+    <button onclick="toggleMenu()" class="absolute top-4 left-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600">
+        ☰
+    </button>
+    
+    <nav id="mobile-menu" class="hidden absolute top-14 left-4 bg-gray-800 p-4 rounded-lg shadow-lg">
+        <ul class="flex flex-col space-y-2">
+            <li><button onclick="showModal('features-modal')" class="text-white hover:text-gray-300">Características</button></li>
+            <li><button onclick="showModal('contact-modal')" class="text-white hover:text-gray-300">Contacto</button></li>
+        </ul>
+    </nav>
+    
+    <div class="min-h-screen flex flex-col items-center justify-center text-center p-6">
+        <h1 class="text-5xl font-extrabold text-red-500">Muzan Bot</h1>
+        <p class="text-lg mt-4 max-w-2xl font-semibold text-shadow-md">
+            Muzan Bot es una solución avanzada para la administración de servidores Discord. Ofrece herramientas de moderación automatizada, integración con sistemas de seguridad y una amplia variedad de funciones interactivas diseñadas para mejorar la experiencia de cualquier comunidad. Rápido, eficiente y fácil de usar, Muzan Bot es la elección perfecta para mantener el orden y el entretenimiento en tu servidor.
+        </p>
+        <a href="https://discord.gg/x8YZQKQHvP" 
+           class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+            Unirse al Servidor
+        </a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1315155057762893925&permissions=8&scope=bot" 
+           class="mt-4 px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700">
+            Invitar al Bot
+        </a>
+    </div>
+    
+    <!-- Modal de Características -->
+    <div id="features-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center expand-circle">
+            <h3 class="text-xl font-bold text-red-400">⭐ Características</h3>
+            <p class="mt-4">✔️ Moderación Avanzada</p>
+            <p class="mt-2">✔️ Comandos optimizados</p>
+            <p class="mt-2">✔️ Seguridad mejorada</p>
+            <p class="mt-2">✔️ Entretenimiento interactivo</p>
+            <button onclick="closeModal('features-modal')" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Contacto -->
+    <div id="contact-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center expand-circle">
+            <h3 class="text-xl font-bold text-red-400">📩 Contacto</h3>
+            <p class="mt-4">Hola querido usuario, si buscas contactarme, escríbeme tu inquietud en el siguiente correo:</p>
+            <p class="mt-2 text-blue-400 underline cursor-pointer"><a href="mailto:alvarocarrillo637@gmail.com">alvarocarrillo637@gmail.com</a></p>
+            <p class="mt-2">¡Te responderé lo antes posible!</p>
+            <button onclick="closeModal('contact-modal')" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Cerrar</button>
+        </div>
+    </div>
+</body>
+</html>
