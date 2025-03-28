@@ -3,123 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Bot - Muzan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('bg-gray-900');
-            body.classList.toggle('bg-white');
-            body.classList.toggle('text-white');
-            body.classList.toggle('text-gray-900');
-        }
-        
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('expand-circle');
-        }
-
-        function showModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('hidden');
-            modal.classList.add('expand-circle');
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add('shrink-circle');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('shrink-circle');
-            }, 500);
-        }
-    </script>
+    <title>Bot de Moderación para Discord</title>
     <style>
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.pinimg.com/originals/b4/f5/36/b4f53638f926ebb093652ca71cc48a6e.gif') center/cover no-repeat;
-            opacity: 0.3;
-            z-index: -1;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('https://64.media.tumblr.com/9e6745ea8032ff60d96316f9dcd9fea6/9d377d7cb77609b2-ba/s540x810/41129194c8825ba2c071f88432af6b008fde08eb.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            padding: 50px;
+            transition: background 0.3s, color 0.3s;
         }
-        
-        .expand-circle {
-            animation: expandCircle 0.5s ease-in-out;
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            transition: background 0.3s;
+            position: relative;
         }
-
-        .shrink-circle {
-            animation: shrinkCircle 0.5s ease-in-out;
+        button {
+            background-color: #7289DA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-
-        @keyframes expandCircle {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        button:hover {
+            background-color: #5b6eae;
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
         }
-
-        @keyframes shrinkCircle {
-            from { transform: scale(1); opacity: 1; }
-            to { transform: scale(0); opacity: 0; }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white relative">
-    <button onclick="toggleTheme()" 
-            class="absolute top-4 right-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600">
-        🌗 Cambiar Tema
-    </button>
-    
-    <button onclick="toggleMenu()" class="absolute top-4 left-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-gray-600">
-        ☰
-    </button>
-    
-    <nav id="mobile-menu" class="hidden absolute top-14 left-4 bg-gray-800 p-4 rounded-lg shadow-lg">
-        <ul class="flex flex-col space-y-2">
-            <li><button onclick="showModal('features-modal')" class="text-white hover:text-gray-300">Características</button></li>
-            <li><button onclick="showModal('contact-modal')" class="text-white hover:text-gray-300">Contacto</button></li>
+<body>
+    <div class="container">
+        <h1>Muzan-Kibutsuji Bot</h1>
+        <img class="embed-image" src="https://i.pinimg.com/originals/13/e5/32/13e532d8bf9dad0f53a9d673f292bb04.gif" alt="Imagen estilo embed">
+        <p>Un bot de moderación avanzado para Discord que ayuda a mantener un ambiente seguro y libre de toxicidad en tu servidor.</p>
+        <p>Funciones principales:</p>
+        <ul>
+            <li>Filtros automáticos de palabras inapropiadas y contenido ofensivo.</li>
+            <li>Expulsión y baneo automático de usuarios problemáticos.</li>
+            <li>Sistema de advertencias con seguimiento de infractores.</li>
+            <li>Registro detallado de actividad para una mejor supervisión.</li>
         </ul>
-    </nav>
-    
-    <div class="min-h-screen flex flex-col items-center justify-center text-center p-6">
-        <h1 class="text-5xl font-extrabold text-red-500">Muzan Bot</h1>
-        <p class="text-lg mt-4 max-w-2xl font-semibold text-shadow-md">
-            Muzan Bot es una solución avanzada para la administración de servidores Discord. Ofrece herramientas de moderación automatizada, integración con sistemas de seguridad y una amplia variedad de funciones interactivas diseñadas para mejorar la experiencia de cualquier comunidad. Rápido, eficiente y fácil de usar, Muzan Bot es la elección perfecta para mantener el orden y el entretenimiento en tu servidor.
-        </p>
-        <a href="https://discord.gg/x8YZQKQHvP" 
-           class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
-            Unirse al Servidor
-        </a>
-        <a href="https://discord.com/oauth2/authorize?client_id=1315155057762893925&permissions=8&scope=bot" 
-           class="mt-4 px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700">
-            Invitar al Bot
-        </a>
-    </div>
-    
-    <!-- Modal de Características -->
-    <div id="features-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center expand-circle">
-            <h3 class="text-xl font-bold text-red-400">⭐ Características</h3>
-            <p class="mt-4">✔️ Moderación Avanzada</p>
-            <p class="mt-2">✔️ Comandos optimizados</p>
-            <p class="mt-2">✔️ Seguridad mejorada</p>
-            <p class="mt-2">✔️ Entretenimiento interactivo</p>
-            <button onclick="closeModal('features-modal')" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Cerrar</button>
+        <div class="button-group">
+            <a href="https://discord.com/oauth2/authorize?client_id=1315155057762893925" target="_blank">
+                <button>Invitar al Bot</button>
+            </a>
+            <a href="mailto:alvarocarrillo637@gmail.com">
+                <button>📩 Contacto</button>
+            </a>
         </div>
-    </div>
-
-    <!-- Modal de Contacto -->
-    <div id="contact-modal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center expand-circle">
-            <h3 class="text-xl font-bold text-red-400">📩 Contacto</h3>
-            <p class="mt-4">Hola querido usuario, si buscas contactarme, escríbeme tu inquietud en el siguiente correo:</p>
-            <p class="mt-2 text-blue-400 underline cursor-pointer"><a href="mailto:alvarocarrillo637@gmail.com">alvarocarrillo637@gmail.com</a></p>
-            <p class="mt-2">¡Te responderé lo antes posible!</p>
-            <button onclick="closeModal('contact-modal')" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Cerrar</button>
-        </div>
+        <p>¿Necesitas ayuda? Entra a nuestro <a href="https://discord.gg/x8YZQKQHvP" target="_blank" style="color:#7289DA;">servidor de soporte</a>.</p>
     </div>
 </body>
 </html>
